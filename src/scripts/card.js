@@ -49,7 +49,6 @@ const createCard = (
   const cardTitle = cardElement.querySelector(".card__title");
   const cardLikeCount = cardElement.querySelector(".card__like-count");
 
-  // использую id для удаления карточки, напрямую не понимаю как передать
   cardElement.dataset.cardId = card._id;
   cardElement.dataset.ownerId = card.owner._id;
   cardImage.src = card.link;
