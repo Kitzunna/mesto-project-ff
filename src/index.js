@@ -89,7 +89,6 @@ const handleProfileFormSubmit = async (evt) => {
     .then((updatedProfile) => {
       fillProfileInfo(updatedProfile);
       closeModal(popupProfile);
-      clearValidation(popupProfileForm, validationConfig);
     })
     .catch((err) => {
       console.log(err);
@@ -106,7 +105,6 @@ const handleAvatarFormSubmit = async (evt) => {
     .then((updatedProfile) => {
       fillProfileInfo(updatedProfile);
       closeModal(popupAvatar);
-      clearValidation(popupAvatarForm, validationConfig);
     })
     .catch((err) => {
       console.log(err);
@@ -134,7 +132,6 @@ const handleNewCardFormSubmit = async (evt) => {
       );
       closeModal(popupNewCard);
       popupNewCardForm.reset();
-      clearValidation(popupNewCardForm, validationConfig);
     })
     .catch((err) => {
       console.log(err);
@@ -207,10 +204,14 @@ popupConfirm.addEventListener("click", (evt) => {
 popupConfirmButton.addEventListener("click", handleConfirmDelete);
 
 // popup close button
-document.addEventListener("click", (evt) => {
-  if (evt.target.classList.contains("popup__close")) {
-    closeModal(evt.target.parentNode.parentNode);
-  }
+const popup = document.querySelector('.popup');
+
+// Обработчик клика на кнопке закрытия
+popup.addEventListener("click", (evt) => { 
+  const closeButton = evt.target.closest(".popup__close"); // Ищем ближайшую кнопку закрытия
+  if (closeButton) { 
+    closeModal(popup);
+  } 
 });
 
 // initialization
