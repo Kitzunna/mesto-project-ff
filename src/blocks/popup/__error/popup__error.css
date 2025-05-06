@@ -1,10 +1,10 @@
 .popup__error {
+  position: absolute;
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   color: #f00;
-  max-height: 15px;
 }
 
 .popup__error:last-of-type {
