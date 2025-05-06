@@ -204,14 +204,15 @@ popupConfirm.addEventListener("click", (evt) => {
 popupConfirmButton.addEventListener("click", handleConfirmDelete);
 
 // popup close button
-const popup = document.querySelector('.popup');
+// находим все крестики проекта по универсальному селектору
+const closeButtons = document.querySelectorAll('.popup__close');
 
-// Обработчик клика на кнопке закрытия
-popup.addEventListener("click", (evt) => { 
-  const closeButton = evt.target.closest(".popup__close"); // Ищем ближайшую кнопку закрытия
-  if (closeButton) { 
-    closeModal(popup);
-  } 
+// с окончанием `s` нужно обязательно, так как много кнопок
+closeButtons.forEach((button) => {
+  // находим 1 раз ближайший к крестику попап 
+  const popup = button.closest('.popup');
+  // устанавливаем обработчик закрытия на крестик
+  button.addEventListener('click', () => closePopup(popup));
 });
 
 // initialization
